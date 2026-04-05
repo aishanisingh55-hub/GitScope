@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitScope — GitHub Profile Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="grain"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <nav>
+    <div class="nav-brand">
+      <span class="brand-icon"></span>
+      <span class="brand-name">Git<span class="accent">Scope</span></span>
+    </div>
+    <a href="https://github.com/aishanisingh55-hub" target="_blank" class="nav-link">My GitHub</a>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <h1>Explore any <span class="accent">GitHub</span> profile</h1>
+      <p class="hero-sub">Search a username to view their stats, repositories, and top languages — all in one place.</p>
+      <div class="search-wrapper">
+        <div class="search-box">
+          <span class="search-icon">⌕</span>
+          <input type="text" id="searchInput" placeholder="Enter GitHub username..." autocomplete="off" />
+          <button id="searchBtn">Search</button>
+        </div>
+        <div class="suggestions hidden" id="suggestions"></div>
+      </div>
+      <div class="error-msg hidden" id="errorMsg"></div>
+    </div>
+
+    <div class="results hidden" id="results">
+
+      <div class="profile-card" id="profileCard">
+        <div class="profile-top">
+          <img class="avatar" id="avatar" src="" alt="avatar" />
+          <div class="profile-info">
+            <h2 class="profile-name" id="profileName"></h2>
+            <p class="profile-username" id="profileUsername"></p>
+            <p class="profile-bio" id="profileBio"></p>
+          </div>
+        </div>
+        <div class="profile-meta">
+          <div class="meta-item" id="metaLocation">
+            <span class="meta-icon">📍</span>
+            <span class="meta-text" id="locationText"></span>
+          </div>
+          <div class="meta-item" id="metaCompany">
+            <span class="meta-icon">🏢</span>
+            <span class="meta-text" id="companyText"></span>
+          </div>
+          <div class="meta-item" id="metaBlog">
+            <span class="meta-icon">🔗</span>
+            <a class="meta-link" id="blogLink" href="" target="_blank"></a>
+          </div>
+          <div class="meta-item" id="metaJoined">
+            <span class="meta-icon">📅</span>
+            <span class="meta-text" id="joinedText"></span>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="p-stat">
+            <span class="p-stat-value" id="repoCount">0</span>
+            <span class="p-stat-label">Repos</span>
+          </div>
+          <div class="p-stat">
+            <span class="p-stat-value" id="followerCount">0</span>
+            <span class="p-stat-label">Followers</span>
+          </div>
+          <div class="p-stat">
+            <span class="p-stat-value" id="followingCount">0</span>
+            <span class="p-stat-label">Following</span>
+          </div>
+          <div class="p-stat">
+            <span class="p-stat-value" id="gistCount">0</span>
+            <span class="p-stat-label">Gists</span>
+          </div>
+        </div>
+        <a class="profile-link" id="profileLink" href="" target="_blank">View on GitHub ↗</a>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3 class="chart-title">Top Languages</h3>
+          <div class="lang-bar" id="langBar"></div>
+          <div class="lang-list" id="langList"></div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Repo Stats</h3>
+          <div class="repo-stats-grid" id="repoStatsGrid">
+            <div class="rs-item">
+              <span class="rs-value" id="totalStars">0</span>
+              <span class="rs-label">Total Stars</span>
+            </div>
+            <div class="rs-item">
+              <span class="rs-value" id="totalForks">0</span>
+              <span class="rs-label">Total Forks</span>
+            </div>
+            <div class="rs-item">
+              <span class="rs-value" id="totalWatchers">0</span>
+              <span class="rs-label">Watchers</span>
+            </div>
+            <div class="rs-item">
+              <span class="rs-value" id="totalSize">0</span>
+              <span class="rs-label">Total Size</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="repos-section">
+        <div class="repos-header">
+          <h3 class="repos-title">Repositories <span class="repo-count-badge" id="repoBadge">0</span></h3>
+          <div class="repos-sort">
+            <span class="sort-label">Sort by</span>
+            <select id="sortSelect">
+              <option value="updated">Recently Updated</option>
+              <option value="stars">Most Stars</option>
+              <option value="forks">Most Forks</option>
+              <option value="name">Name (A-Z)</option>
+            </select>
+          </div>
+        </div>
+        <div class="repos-grid" id="reposGrid"></div>
+      </div>
+
+    </div>
+
+    <div class="loader hidden" id="loader">
+      <div class="spinner"></div>
+      <p>Fetching profile data...</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Built by <strong> Aishani Singh✨</strong></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
